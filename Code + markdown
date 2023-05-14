@@ -1,0 +1,39 @@
+## Automated File Sorter in File Explorer
+
+This notebook demonstrates how to use Python to automatically sort files in a file explorer. The code uses the `os` and `shutil` modules to create subdirectories for different file types, and then move the files to the corresponding subdirectories.
+
+The code is as follows:
+
+```python
+import os
+import shutil
+
+# Get the path to the current directory
+current_directory = os.getcwd()
+
+# Create subdirectories for different file types
+xlsx_directory = os.path.join(current_directory, "xlsx files")
+jpg_directory = os.path.join(current_directory, "image files")
+pdf_directory = os.path.join(current_directory, "pdf files")
+
+# Create a list of all the files in the current directory
+file_names = os.listdir(current_directory)
+
+# Iterate over the list of files
+for file_name in file_names:
+    # Check the file extension
+    if ".xlsx" in file_name:
+        # Move the file to the xlsx files subdirectory
+        shutil.move(file_name, xlsx_directory)
+    elif ".JPG" in file_name:
+        # Move the file to the image files subdirectory
+        shutil.move(file_name, jpg_directory)
+    elif ".pdf" in file_name:
+        # Move the file to the pdf files subdirectory
+        shutil.move(file_name, pdf_directory)
+
+# Print a message to indicate that the files have been sorted
+print("Files have been sorted!")
+
+
+This code can be used to automatically sort files in any directory. To use the code, simply change the `current_directory` variable to the path of the directory that you want to sort.
